@@ -1,15 +1,13 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { HomePage } from "./views/HomePage";
+import { NavBar } from "./components/NavBar";
 
 function App() {
   return (
     <>
-      <div className="App">
-        <header className="App-header">
-          <NavLink href="/">eshop</NavLink>
-        </header>
-      </div>
+      <NavBar />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
