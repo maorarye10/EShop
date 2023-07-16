@@ -22,11 +22,24 @@ router.post(
   "/",
   isAuth,
   expressAsyncHandler(async (req, res) => {
-    const newOrder = Order.create({
-      orderItems: req.body.orderItems.map((item) => ({
-        product: item._id,
-      })),
-    });
+    try {
+      const newOrder = await Order.create({
+        orderItems: req.body.orderItems.map((item) => ({
+          //...item, //! this may be removed in the future
+          product: item._id,
+        })),
+        shippingAddress: req.body.shippingAddress,
+        paymentMethod: req.body.paymentMethod,
+        itemsPrice: req.body.itemsPrice,
+        shippingPrice: req.body.shippingPrice,
+        taxPrice: req.body.taxPrice,
+        totalPrice: req.body.totalPrice,
+        user: req.user._id,
+      });
+      res.status(201).send({ message: "Order Created", order });
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
   })
 );
 
