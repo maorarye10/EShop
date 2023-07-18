@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRouter = require("./routes/userRoutes");
 const seedRouter = require("./routes/seedRoutes");
+const orderRouter = require("./routes/orderRoutes");
+const productRouter = require("./routes/productRoutes");
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -15,8 +17,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/users", userRouter);
 app.use("/api/seed", seedRouter);
+app.use("/api/users", userRouter);
+app.use("/api/orders", orderRouter);
+app.use("/api/products", productRouter);
 
 mongoose
   .connect(DBURL, {

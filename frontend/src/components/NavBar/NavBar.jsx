@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Container } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
+import "./NavBar.css";
 
 export const NavBar = () => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ export const NavBar = () => {
         <header className="App-header">
             <Navbar bg="dark" variant="dark">
                 <Link
+                    className="ms-5"
                     onClick={() => {
                         navigate(-1);
                     }}
@@ -24,7 +26,7 @@ export const NavBar = () => {
                     </LinkContainer>
 
                     <nav className="d-flex mx-auto align-items-center">
-                        <input type="text"></input>
+                        <input type="text" placeholder="Search for products"></input>
                     </nav>
 
                     <Link to="/cart" className="nav-link me-4 ms-4">Cart</Link>

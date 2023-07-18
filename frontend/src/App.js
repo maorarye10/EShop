@@ -1,16 +1,18 @@
-import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { HomePage } from "./views/HomePage";
-import { NavBar } from "./components/NavBar";
+import { Route, Routes } from "react-router-dom";
+import { HomePage } from "./views/HomePage/HomePage";
+import { NavBar } from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <>
       <NavBar />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </main>
     </>
   );
 }
